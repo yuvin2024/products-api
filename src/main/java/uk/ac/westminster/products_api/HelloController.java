@@ -34,5 +34,7 @@ public class HelloController {
     }
 
     // TODO (Activity 3): add your /goodbye endpoint here.
+    @GetMapping("InfoController")
+    public String InfoController(){return LocalDate.now().toString();}
 
 }
