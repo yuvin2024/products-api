@@ -19,6 +19,11 @@ public class productService {
         return products;
     }
 
+    public productService(){
+        products.add(new DigitalProduct(4L,"E-book", 267.55, "https://download.link/ebook", 25.67 ));
+        products.add(new PhysicalProduct(5L,"Book", 1200.67,500,"10*10"));
+    }
+
     public  Product addProduct(Product product){
         product.setId(nextId++);    //use the value, then add one
         products.add(product);
