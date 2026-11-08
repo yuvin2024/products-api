@@ -20,8 +20,8 @@ public class productService {
     }
 
     public productService(){
-        products.add(new DigitalProduct(4L,"E-book", 267.55, "https://download.link/ebook", 25.67 ));
-        products.add(new PhysicalProduct(5L,"Book", 1200.67,500,"10*10"));
+        products.add(new DigitalProduct(nextId++,"E-book", 267.55, "https://download.link/ebook", 25.67 ));
+        products.add(new PhysicalProduct(nextId++,"Book", 1200.67,500,"10*10"));
     }
 
     public  Product addProduct(Product product){
@@ -41,6 +41,13 @@ public class productService {
     public List<Product> findByName(String name) {
         return products.stream().filter(p->p.getName().contains(name)).toList();
 
+    }
+    public List<String> getAllSummaries(){
+        List<String> summaries = new ArrayList<>();
+        for (Product p: products){
+            summaries.add(p.getSummary());
+        }
+        return summaries;
     }
 
 

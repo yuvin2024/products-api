@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+//@RequestMapping("/products")
 
 
 public class ProductController {
@@ -19,19 +19,17 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
-    public Product getById(@PathVariable Long id){
-        return new Product(id, "Laptop",999.99);
-    }
-    @GetMapping ("/products / {id}")
+
+    @GetMapping ("/products/{id}")
     public  Product getProductById(@PathVariable Long id){
         return productService.getProductById(id). orElse (null);
     }
 
     @PostMapping("/products")
-    public Product addProduct(@RequestBody Product product){
+    public Product addProduct(@RequestBody DigitalProduct product){
         return productService.addProduct(product);
     }
+
     @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
@@ -39,6 +37,10 @@ public class ProductController {
     @GetMapping("/products/search")
     public List<Product> search(@RequestParam String name) {
         return productService.findByName(name);
+    }
+    @GetMapping("/products/summaries")
+    public List<String> getSummaries(){
+        return productService.getAllSummaries();
     }
 
 }
